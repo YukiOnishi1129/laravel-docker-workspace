@@ -93,3 +93,32 @@ npm install
 
 上記が正常に動作できれば、構築完了です。
 
+●dockerコマンド
+
+・docker立ち上げ
+
+docker-compose up -d
+
+・docker リスタート
+
+docker-compose restart
+
+・docker 停止
+
+docker-compose stop
+
+・buildして立ち上げる
+
+docker-compose up -d --build
+
+・appコンテナにログイン
+
+docker-compose exec app bash
+
+●mysqlへのログイン方法(docker上で実行)
+
+docker exec -it コンテナID mysql -u root -p
+
+※mysqlのコンテナIDは下記コマンドを実行して確認
+
+docker ps
