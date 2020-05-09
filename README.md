@@ -2,7 +2,7 @@
 
 簡単にLaravel環境を構築できるdockerの環境です。
 
-●環境構築条件
+## 環境構築条件
 
 ・php 7.2
 
@@ -14,14 +14,14 @@
 
 ・npm (最新)
 
-# Usage
-●注意点
 
-・mysqlのDATABASE名、user名、passwordは各自変更してください。
+## 注意点
+
+### mysqlのDATABASE名、user名、passwordは各自変更してください。
 
 docker-compose.ymlの21~24行目に記述
 
-・ドキュメントルートの設定は各自変更してください。
+### ドキュメントルートの設定は各自変更してください。
 
 docker->web->default.confの4行目
 
@@ -29,25 +29,25 @@ root  /var/www/html/プロジェクト名/public;
 
 ※/var/www/html/の直下にLaravelプロジェクトを作成する手順にしています。
 
-●環境構築方法
+## 環境構築方法
 
-1.上記注意事項を実施
+### 1.上記注意事項を実施
 
-2.laravel-docker-workspaceのディレクトリにて以下のコマンドを実施
+### 2.laravel-docker-workspaceのディレクトリにて以下のコマンドを実施
 
 docker-compose up -d --build (コンテナをビルドして立ち上げる)
 
-3.appコンテナにログイン
+### 3.appコンテナにログイン
 
 docker-compose exec app bash
 
-4./var/www/html/にいると思うので、そこでLaravelプロジェクトを作成
+### 4./var/www/html/にいると思うので、そこでLaravelプロジェクトを作成
 
 ※ver5.8は以下のコマンドになります。
 
 composer create-project "laravel/laravel=5.8.*" プロジェクト名
 
-5.urlの確認
+### 5.urlの確認
 
 この状態で以下のurlに遷移すると正常に動作できてるか確認できます。
 
@@ -59,7 +59,7 @@ localhost:8000
 
 localhost:8080
 
-6.migrationの確認
+### 6.migrationの確認
 
 ・Laravelプロジェクトの.envファイルを修正
 
@@ -79,7 +79,7 @@ DB_PASSWORD=docker-compose.ymlの23行目
 
 php artisan migrate
 
-7.npmの確認
+### 7.npmの確認
 
 ・docker上で以下のコマンドを確認し、node,npmが入っていることを確認
 
@@ -93,7 +93,7 @@ npm install
 
 上記が正常に動作できれば、構築完了です。
 
-●dockerコマンド
+## dockerコマンド
 
 ・docker立ち上げ
 
@@ -115,7 +115,7 @@ docker-compose up -d --build
 
 docker-compose exec app bash
 
-●mysqlへのログイン方法(docker上で実行)
+## mysqlへのログイン方法(docker上で実行)
 
 docker exec -it コンテナID mysql -u root -p
 
