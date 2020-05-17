@@ -105,7 +105,7 @@ npm install browser-sync browser-sync-webpack-plugin
 
 ・webpack.mix.js に以下の内容を追記
 
-```
+```javascript=
 mix.react("resources/js/app.jsx", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     // 以下の内容を追記
