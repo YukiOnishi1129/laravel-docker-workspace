@@ -1,6 +1,6 @@
 # laravel_docker_development
 
-簡単にLaravel環境を構築できるdockerの環境です。
+簡単に Laravel 環境を構築できる docker の環境です。
 
 ## 環境構築条件
 
@@ -14,54 +14,55 @@
 
 ・npm (最新)
 
+・yarn (最新)
 
 ## 注意点
 
-### mysqlのDATABASE名、user名、passwordは各自変更してください。
+### mysql の DATABASE 名、user 名、password は各自変更してください。
 
-docker-compose.ymlの21~24行目に記述
+docker-compose.yml の 21~24 行目に記述
 
 ### ドキュメントルートの設定は各自変更してください。
 
-docker->web->default.confの4行目
+docker->web->default.conf の 4 行目
 
-root  /var/www/html/プロジェクト名/public;
+root /var/www/html/プロジェクト名/public;
 
-※/var/www/html/の直下にLaravelプロジェクトを作成する手順にしています。
+※/var/www/html/の直下に Laravel プロジェクトを作成する手順にしています。
 
 ## 環境構築方法
 
 ### 1.上記注意事項を実施
 
-### 2.laravel-docker-workspaceのディレクトリにて以下のコマンドを実施
+### 2.laravel-docker-workspace のディレクトリにて以下のコマンドを実施
 
 docker-compose up -d --build (コンテナをビルドして立ち上げる)
 
-### 3.appコンテナにログイン
+### 3.app コンテナにログイン
 
 docker-compose exec app bash
 
-### 4./var/www/html/にいると思うので、そこでLaravelプロジェクトを作成
+### 4./var/www/html/にいると思うので、そこで Laravel プロジェクトを作成
 
-※ver5.8は以下のコマンドになります。
+※ver5.8 は以下のコマンドになります。
 
-composer create-project "laravel/laravel=5.8.*" プロジェクト名
+composer create-project "laravel/laravel=5.8.\*" プロジェクト名
 
-### 5.urlの確認
+### 5.url の確認
 
-この状態で以下のurlに遷移すると正常に動作できてるか確認できます。
+この状態で以下の url に遷移すると正常に動作できてるか確認できます。
 
-・Laravelトップページ
+・Laravel トップページ
 
 localhost:8000
 
 ・phpMyAdmin
 
-localhost:8080
+localhost:8081
 
-### 6.migrationの確認
+### 6.migration の確認
 
-・Laravelプロジェクトの.envファイルを修正
+・Laravel プロジェクトの.env ファイルを修正
 
 DB_CONNECTION=mysql
 
@@ -69,33 +70,61 @@ DB_HOST=mysql
 
 DB_PORT=3306
 
-DB_DATABASE=docker-compose.ymlの21行目
+DB_DATABASE=docker-compose.yml の 21 行目
 
-DB_USERNAME=docker-compose.ymlの22行目
+DB_USERNAME=docker-compose.yml の 22 行目
 
-DB_PASSWORD=docker-compose.ymlの23行目
+DB_PASSWORD=docker-compose.yml の 23 行目
 
-・Laravelプロジェクト直下で以下のコマンドを実行し、migrationが正常に動作できているか確認
+・Laravel プロジェクト直下で以下のコマンドを実行し、migration が正常に動作できているか確認
 
 php artisan migrate
 
-### 7.npmの確認
+### 7.npm の確認
 
-・docker上で以下のコマンドを確認し、node,npmが入っていることを確認
+・docker 上で以下のコマンドを確認し、node,npm が入っていることを確認
 
 node -v
 
 npm -v
 
-・Laravelプロジェクト直下にて以下のコマンドを実行
+・Laravel プロジェクト直下にて以下のコマンドを実行
 
 npm install
 
 上記が正常に動作できれば、構築完了です。
 
-## dockerコマンド
+\*yanr も使用可能です。
 
-・docker立ち上げ
+### 8.ホットリロード環境の構築
+
+・browser-sync、browser-sync-webpack-plugin をインストール
+
+npm install browser-sync browser-sync-webpack-plugin
+(yarn browser-sync browser-sync-webpack-plugin)
+
+・webpack.mix.js に以下の内容を追記
+
+```
+mix.react("resources/js/app.jsx", "public/js")
+    .sass("resources/sass/app.scss", "public/css")
+    // 以下の内容を追記
+    .browserSync({
+        proxy: "nginx",
+        open: false,
+    });
+```
+
+・以下のコマンドを実行
+
+npm run watch
+(yarn watch)
+
+以上でホットリロードが可能になります。
+
+## docker コマンド
+
+・docker 立ち上げ
 
 docker-compose up -d
 
@@ -107,18 +136,18 @@ docker-compose restart
 
 docker-compose stop
 
-・buildして立ち上げる
+・build して立ち上げる
 
 docker-compose up -d --build
 
-・appコンテナにログイン
+・app コンテナにログイン
 
 docker-compose exec app bash
 
-## mysqlへのログイン方法(docker上で実行)
+## mysql へのログイン方法(docker 上で実行)
 
-docker exec -it コンテナID mysql -u root -p
+docker exec -it コンテナ ID mysql -u root -p
 
-※mysqlのコンテナIDは下記コマンドを実行して確認
+※mysql のコンテナ ID は下記コマンドを実行して確認
 
 docker ps
