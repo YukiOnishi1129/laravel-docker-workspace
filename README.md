@@ -54,7 +54,7 @@ composer create-project "laravel/laravel=5.8.\*" プロジェクト名
 
 ・Laravel トップページ
 
-localhost:8000
+localhost:80
 
 ・phpMyAdmin
 
