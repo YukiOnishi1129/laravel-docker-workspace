@@ -101,7 +101,7 @@ npm install
 ・browser-sync、browser-sync-webpack-plugin をインストール
 
 npm install browser-sync browser-sync-webpack-plugin
-(yarn browser-sync browser-sync-webpack-plugin)
+(yarn add browser-sync browser-sync-webpack-plugin)
 
 ・webpack.mix.js に以下の内容を追記
 
