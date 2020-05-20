@@ -106,9 +106,11 @@ npm install browser-sync browser-sync-webpack-plugin
 ・webpack.mix.js に以下の内容を追記
 
 ```javascript=
+
+// react環境で構築する場合です。
 mix.react("resources/js/app.jsx", "public/js")
     .sass("resources/sass/app.scss", "public/css")
-    // 以下の内容を追記
+    // 以下の内容を追記 (上記記載(mix.react~)はvue環境では異なりますが、以下のbrowserSyncからの記載を追記すれば問題ないです。)
     .browserSync({
         proxy: "nginx",
         open: false,
