@@ -20,7 +20,7 @@
 
 ### mysql の DATABASE 名、user 名、password は各自変更してください。
 
-docker-compose.yml の 21~24 行目に記述
+docker-compose.yml の 24~27 行目に記述
 
 ### ドキュメントルートの設定は各自変更してください。
 
@@ -70,11 +70,11 @@ DB_HOST=mysql
 
 DB_PORT=3306
 
-DB_DATABASE=docker-compose.yml の 21 行目
+DB_DATABASE=docker-compose.yml の 24 行目
 
-DB_USERNAME=docker-compose.yml の 22 行目
+DB_USERNAME=docker-compose.yml の 25 行目
 
-DB_PASSWORD=docker-compose.yml の 23 行目
+DB_PASSWORD=docker-compose.yml の 26 行目
 
 ・Laravel プロジェクト直下で以下のコマンドを実行し、migration が正常に動作できているか確認
 
@@ -137,6 +137,10 @@ docker-compose restart
 ・docker 停止
 
 docker-compose stop
+
+・dockerのコンテナを停止
+
+docker-compose down
 
 ・build して立ち上げる
 
