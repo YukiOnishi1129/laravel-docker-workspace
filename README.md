@@ -140,7 +140,7 @@ docker-compose stop
 
 ・dockerのコンテナを停止
 
-docker-compose down
+docker-compose down -v
 
 ・build して立ち上げる
 
