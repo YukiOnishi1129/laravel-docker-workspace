@@ -44,6 +44,10 @@ docker-compose exec app bash
 
 ### 4./var/www/html/にいると思うので、そこで Laravel プロジェクトを作成
 
+以下のコマンドでプロジェクトを作成
+
+composer create-project laravel/laravel プロジェクト名
+
 ※ver5.8 は以下のコマンドになります。
 
 composer create-project "laravel/laravel=5.8.\*" プロジェクト名

@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   nginx:
     image: nginx:1.15.6
@@ -34,8 +34,8 @@ services:
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=mysql
-      - PMA_USER=user
-      - PMA_PASSWORD=password
+      # - PMA_USER=user
+      # - PMA_PASSWORD=password
     links:
       - mysql
     ports:
